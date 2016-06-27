@@ -145,7 +145,7 @@
             }
 
             function downloadFile(dataObject){
-                var object = dataObject,
+                var object = JSON.parse(dataObject),
                     data = object.data,
                     fileName = object.fileName,
                     mimeType = object.mimeType,
