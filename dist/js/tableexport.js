@@ -56,7 +56,6 @@
                                 }),
                             myContent = $.fn.tableExport.xlsx.buttonContent,
                             myClass = $.fn.tableExport.xlsx.defaultClass;
-                        // createObjButton(dataObject, myContent, myClass);
                         downloadFile(dataObject);
                     },
                     xls: function (rdel, name) {
@@ -78,7 +77,6 @@
                                 }),
                             myContent = $.fn.tableExport.xls.buttonContent,
                             myClass = $.fn.tableExport.xls.defaultClass;
-                        // createObjButton(dataObject, myContent, myClass);
                         downloadFile(dataObject);
                     },
                     csv: function (rdel, name) {
@@ -100,7 +98,6 @@
                                 }),
                             myContent = $.fn.tableExport.csv.buttonContent,
                             myClass = $.fn.tableExport.csv.defaultClass;
-                        // createObjButton(dataObject, myContent, myClass);
                         downloadFile(dataObject);
                     },
                     txt: function (rdel, name) {
@@ -122,7 +119,6 @@
                                 }),
                             myContent = $.fn.tableExport.txt.buttonContent,
                             myClass = $.fn.tableExport.txt.defaultClass;
-                        // createObjButton(dataObject, myContent, myClass);
                         downloadFile(dataObject);
                     }
                 };
@@ -145,7 +141,7 @@
             }
 
             function downloadFile(dataObject){
-                var object = dataObject,
+                var object = JSON.parse(dataObject),
                     data = object.data,
                     fileName = object.fileName,
                     mimeType = object.mimeType,
