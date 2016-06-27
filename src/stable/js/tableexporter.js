@@ -129,17 +129,6 @@
                 }
             );
 
-            function checkCaption(exportButton) {
-                var $caption = $el.find('caption:not(.head)');
-                $caption.length ? $caption.append(exportButton) : $el.prepend('<caption class="' + bootstrapSpacing + settings.position + '">' + exportButton + '</caption>');
-            }
-
-            function createObjButton(dataObject, myContent, myClass) {
-                var exportButton = "<button data-fileblob='" + dataObject + "' class='" + bootstrapClass + bootstrapTheme + myClass + "'>" + myContent + "</button>";
-                checkCaption(exportButton);
-
-            }
-
             function downloadFile(dataObject){
                 var object = JSON.parse(dataObject),
                     data = object.data,
