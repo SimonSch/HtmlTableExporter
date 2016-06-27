@@ -1,11 +1,11 @@
 {
-  "name": "tableexport",
-  "version": "3.2.5",
+  "name": "TableExporter",
+  "version" : "0.0.1",
   "authors": [
-    "clarketm <travis.m.clarke@gmail.com>"
+    "simonsch <sa.schroffner@gmail.com>"
   ],
   "description": "The simple, easy-to-implement plugin to export HTML tables to xlsx, xls, csv, and txt files",
-  "main": "dist/js/tableexport.js",
+  "main": "dist/js/tableexporter.js",
   "keywords": [
     "table",
     "export",
@@ -22,13 +22,6 @@
   "scripts": {
     "test": "gulp"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/clarketm/TableExport"
-  },
-  "bugs": {
-    "url": "https://github.com/clarketm/TableExport/issues"
-  },
   "dependencies": {
     "Blob": "*",
     "bootstrap": "~3.3.5",
@@ -44,7 +37,6 @@
     "gulp-uglify": "^1.5.3"
   },
   "license": "MIT",
-  "homepage": "http://www.clarketravis.com",
   "ignore": [
     "**/.*",
     "node_modules",

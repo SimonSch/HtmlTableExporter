@@ -1,6 +1,6 @@
 {
-  "name": "tableexporter.js",
-  "version": "3.2.5",
+  "name": "TableExporter",
+  "version" : "0.0.1",
   "authors": [
     "simonsch <sa.schroffner@gmail.com>"
   ],
