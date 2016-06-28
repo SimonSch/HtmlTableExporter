@@ -2,7 +2,8 @@
   "name": "TableExporter",
   "version" : "0.0.1",
   "authors": [
-    "simonsch <sa.schroffner@gmail.com>"
+    "simonsch <sa.schroffner@gmail.com>",
+    "chmoser"
   ],
   "description": "The simple, easy-to-implement plugin to export HTML tables to xlsx, xls, csv, and txt files",
   "main": "dist/js/tableexporter.js",

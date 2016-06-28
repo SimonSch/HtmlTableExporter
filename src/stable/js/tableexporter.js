@@ -37,7 +37,7 @@
             if (column.type && column.type === 'object') {
                 html = createTd(html, objSingle[column.fieldName], column.options);
             } else if(column.type && column.type === 'date'){
-                if (objSingle.hasOwnProperty(column.fieldName)) {
+                if (objSingle[column.fieldName]) {
                     var value = objSingle[column.fieldName];
                     if (value !== undefined && value !== null) {
                         html += '<td>' + new Date(value).toLocaleString('de') + '</td>';
@@ -49,7 +49,7 @@
                 }
             } else {
                 var fieldName = column.fieldName ? column.fieldName : column;
-                if (objSingle.hasOwnProperty(fieldName)) {
+                if (objSingle[fieldName]) {
                     var value = objSingle[fieldName];
                     if (value !== undefined && value !== null) {
                         html += '<td>' + value + '</td>';
