@@ -1,14 +1,110 @@
 /*!
- * TableExport.js v3.2.5 (http://www.clarketravis.com)
+ * TableExporter.js v0.0.1
  * Copyright 2016 Travis Clarke
  * Licensed under the MIT license
  *
+ * Edited by SimonSch
  */
 
 ;(function (window, undefined) {
 
     /*--- GLOBALS ---*/
     var $ = window.jQuery;
+
+    function createHeader(html, options){
+        $.each(options, function(i, column){
+            if ($.isPlainObject(column)){
+                if (column.type === 'object') {
+                    html = createHeader(html, column.options);
+                } else {
+                    html += '<th>' + (column.columnName ? column.columnName : column.fieldName) + '</th>';
+                }
+            }else{
+                html += '<th>' + column + '</th>';
+            }
+        });
+        return html;
+    }
+
+    function createTd(html,objSingle, options){
+        for (var index = 0; index < options.length; ++index) {
+            var column = options[index];
+            if (!objSingle) {
+                html += '<td></td>';
+                continue;
+            }
+
+            if (column.type && column.type === 'object') {
+                html = createTd(html, objSingle[column.fieldName], column.options);
+            } else if(column.type && column.type === 'date'){
+                if (objSingle.hasOwnProperty(column.fieldName)) {
+                    var value = objSingle[column.fieldName];
+                    if (value !== undefined && value !== null) {
+                        html += '<td>' + new Date(value).toLocaleString('de') + '</td>';
+                    } else {
+                        html += '<td></td>';
+                    }
+                } else {
+                    html += '<td></td>';
+                }
+            } else {
+                var fieldName = column.fieldName ? column.fieldName : column;
+                if (objSingle.hasOwnProperty(fieldName)) {
+                    var value = objSingle[fieldName];
+                    if (value !== undefined && value !== null) {
+                        html += '<td>' + value + '</td>';
+                    } else {
+                        html += '<td></td>';
+                    }
+                } else {
+                    html += '<td></td>';
+                }
+            }
+        }
+        return html;
+    }
+
+    function createWithOption(html,objArray, options) {
+
+        if(options.length > 0) {
+
+            html += '<tr>';
+            html += createHeader(html, options);
+            html += '</tr>';
+
+            $.each(objArray, function (index, objSingle) {
+                html += '<tr>';
+                html = createTd(html, objSingle, options);
+                html += '</tr>';
+            });
+        }
+
+        return html;
+    }
+
+
+    $.fn.convertJsonToHtml = function (data, options) {
+
+        var jsonObj = $.parseJSON(data);
+        var html = '<table border="1">';
+
+        if(options) {
+            return createWithOption(html,jsonObj, options);
+        }
+
+        $.each(jsonObj, function(index, obje){
+            html += '<tr>';
+            $.each(obje, function(key, value){
+                html += '<td>' + key + '</td>';
+                html += '<td>' + value + '</td>';
+            });
+            html += '</tr>';
+        });
+        html += '</table>';
+
+        return html;
+
+    };
 
     $.fn.tableExport = function (options, isUpdate) {
 
@@ -53,9 +149,7 @@
                                     fileName: name,
                                     mimeType: $.fn.tableExport.xlsx.mimeType,
                                     fileExtension: $.fn.tableExport.xlsx.fileExtension
-                                }),
-                            myContent = $.fn.tableExport.xlsx.buttonContent,
-                            myClass = $.fn.tableExport.xlsx.defaultClass;
+                                });
                         downloadFile(dataObject);
                     },
                     xls: function (rdel, name) {
@@ -74,9 +168,7 @@
                                     fileName: name,
                                     mimeType: $.fn.tableExport.xls.mimeType,
                                     fileExtension: $.fn.tableExport.xls.fileExtension
-                                }),
-                            myContent = $.fn.tableExport.xls.buttonContent,
-                            myClass = $.fn.tableExport.xls.defaultClass;
+                                });
                         downloadFile(dataObject);
                     },
                     csv: function (rdel, name) {
@@ -95,9 +187,7 @@
                                     fileName: name,
                                     mimeType: $.fn.tableExport.csv.mimeType,
                                     fileExtension: $.fn.tableExport.csv.fileExtension
-                                }),
-                            myContent = $.fn.tableExport.csv.buttonContent,
-                            myClass = $.fn.tableExport.csv.defaultClass;
+                                });
                         downloadFile(dataObject);
                     },
                     txt: function (rdel, name) {
@@ -116,9 +206,7 @@
                                     fileName: name,
                                     mimeType: $.fn.tableExport.txt.mimeType,
                                     fileExtension: $.fn.tableExport.txt.fileExtension
-                                }),
-                            myContent = $.fn.tableExport.txt.buttonContent,
-                            myClass = $.fn.tableExport.txt.defaultClass;
+                                });
                         downloadFile(dataObject);
                     }
                 };
