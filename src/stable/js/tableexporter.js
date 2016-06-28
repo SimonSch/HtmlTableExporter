@@ -69,7 +69,7 @@
         if(options.length > 0) {
 
             html += '<tr>';
-            html += createHeader(html, options);
+            html = createHeader(html, options);
             html += '</tr>';
 
             $.each(objArray, function (index, objSingle) {
@@ -89,7 +89,9 @@
         var html = '<table border="1">';
 
         if(options) {
-            return createWithOption(html,jsonObj, options);
+            html = createWithOption(html,jsonObj, options);
+            html += '</table>';
+            return html;
         }
 
         $.each(jsonObj, function(index, obje){
@@ -151,6 +153,7 @@
                                     fileExtension: $.fn.tableExport.xlsx.fileExtension
                                 });
                         downloadFile(dataObject);
+
                     },
                     xls: function (rdel, name) {
                         var colD = $.fn.tableExport.xls.separator,
