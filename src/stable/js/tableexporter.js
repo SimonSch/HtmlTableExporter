@@ -10,7 +10,7 @@
 
     /*--- GLOBALS ---*/
     var $ = window.jQuery;
-
+ 
     function createHeader(html, options){
         $.each(options, function(i, column){
             if ($.isPlainObject(column)){
