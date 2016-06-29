@@ -105,7 +105,8 @@
             settings = isUpdate ? options : $.extend({}, $.fn.tableExport.defaults, options),
             rowD = $.fn.tableExport.rowDel,
             ignoreRows = settings.ignoreRows instanceof Array ? settings.ignoreRows : [settings.ignoreRows],
-            ignoreCols = settings.ignoreCols instanceof Array ? settings.ignoreCols : [settings.ignoreCols];
+            ignoreCols = settings.ignoreCols instanceof Array ? settings.ignoreCols : [settings.ignoreCols],
+            ignoreCSS = settings.ignoreCSS instanceof Array ? settings.ignoreCSS.join(", ") : settings.ignoreCSS;
         
         $this.each(function () {
             var $el = $(this);
