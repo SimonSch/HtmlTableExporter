@@ -70,7 +70,7 @@ var options = [{ fieldName: '<fieldName>', type: '<type>', options:[{fieldName: 
 ```
 
 | Property | Description | Values | Optional |
-|---|
+| :------: | :------: | :-------: | :---: | :-----: | :------: |
 |  fieldName  |  Json object field name     | string |  yes|
 |  columnName  |  Column alias name     | string | yes |
 |  type  |  data type     | string, number, date | yes |
@@ -115,7 +115,7 @@ tables.tableExport.remove();     // removes caption and buttons
 ### Properties
 
 | Property | Description | Values | Default |
-|---|
+| :------: | :------: | :-------: | :---: | :-----: | :------: |
 |  formats  |  wololo     | wololo | wololo  |
 |  filename  |  wololo     | wololo | wololo  |
 |  wololo  |  wololo     | wololo | wololo  |
