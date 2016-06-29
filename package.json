@@ -17,6 +17,8 @@
     "xls",
     "csv",
     "txt",
+    "json",
+    "html",
     "jquery-plugin",
     "ecosystem:jquery"
   ],
