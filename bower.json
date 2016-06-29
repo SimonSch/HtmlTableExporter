@@ -10,12 +10,15 @@
   "keywords": [
     "table",
     "export",
-    "tableexport",
+    "table",
+    "export",
     "Excel",
     "xlsx",
     "xls",
     "csv",
     "txt",
+    "json",
+    "html",
     "jquery-plugin",
     "ecosystem:jquery"
   ],
