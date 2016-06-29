@@ -65,9 +65,7 @@
     }
 
     function createWithOption(html,objArray, options) {
-
         if(options.length > 0) {
-
             html += '<tr>';
             html = createHeader(html, options);
             html += '</tr>';
@@ -78,22 +76,17 @@
                 html += '</tr>';
             });
         }
-
         return html;
     }
-
-
+    
     $.fn.convertJsonToHtml = function (data, options) {
-
         var jsonObj = $.parseJSON(data);
         var html = '<table border="1">';
-
         if(options) {
             html = createWithOption(html,jsonObj, options);
             html += '</table>';
             return html;
         }
-
         $.each(jsonObj, function(index, obje){
             html += '<tr>';
             $.each(obje, function(key, value){
@@ -103,9 +96,7 @@
             html += '</tr>';
         });
         html += '</table>';
-
         return html;
-
     };
 
     $.fn.tableExport = function (options, isUpdate) {
@@ -114,19 +105,8 @@
             settings = isUpdate ? options : $.extend({}, $.fn.tableExport.defaults, options),
             rowD = $.fn.tableExport.rowDel,
             ignoreRows = settings.ignoreRows instanceof Array ? settings.ignoreRows : [settings.ignoreRows],
-            ignoreCols = settings.ignoreCols instanceof Array ? settings.ignoreCols : [settings.ignoreCols],
-            ignoreCSS = settings.ignoreCSS instanceof Array ? settings.ignoreCSS.join(", ") : settings.ignoreCSS,
-            bootstrapClass, bootstrapTheme, bootstrapSpacing;
-
-        if (settings.bootstrap) {
-            bootstrapClass = $.fn.tableExport.bootstrap[0] + " ";
-            bootstrapTheme = $.fn.tableExport.bootstrap[1] + " ";
-            bootstrapSpacing = $.fn.tableExport.bootstrap[2] + " ";
-        } else {
-            bootstrapClass = $.fn.tableExport.defaultButton + " ";
-            bootstrapTheme = bootstrapSpacing = "";
-        }
-
+            ignoreCols = settings.ignoreCols instanceof Array ? settings.ignoreCols : [settings.ignoreCols];
+        
         $this.each(function () {
             var $el = $(this);
             if (isUpdate) { $el.find('caption:not(.head)').remove();}
@@ -249,15 +229,12 @@
 
     // Define the plugin default properties.
     $.fn.tableExport.defaults = {
-        headings: true,                             // (Boolean), display table headings (th or td elements) in the <thead>, (default: true)
-        footers: true,                              // (Boolean), display table footers (th or td elements) in the <tfoot>, (default: false)
-        formats: ["xls", "csv", "txt"],             // (String[]), filetype(s) for the export, (default: ["xls", "csv", "txt"])
-        fileName: "id",                             // (id, String), filename for the downloaded file, (default: "id")
-        bootstrap: true,                            // (Boolean), style buttons using bootstrap, (default: true)
-        position: "bottom",                         // (top, bottom), position of the caption element relative to table, (default: "bottom")
-        ignoreRows: null,                           // (Number, Number[]), row indices to exclude from the exported file (default: null)
-        ignoreCols: null,                           // (Number, Number[]), column indices to exclude from the exported file (default: null)
-        ignoreCSS: ".tableexport-ignore"            // (selector, selector[]), selector(s) to exclude from the exported file (default: ".tableexport-ignore")
+        headings: true,
+        footers: true,
+        formats: ["xls", "csv", "txt"],
+        fileName: "id",
+        ignoreRows: null,
+        ignoreCols: null
     };
 
     $.fn.tableExport.charset = "charset=utf-8";
@@ -295,19 +272,9 @@
 
     $.fn.tableExport.defaultFileName = "myDownload";
 
-    $.fn.tableExport.defaultButton = "button-default";
-
-    $.fn.tableExport.bootstrap = ["btn", "btn-default", "btn-toolbar"];
-
     $.fn.tableExport.rowDel = "\r\n";
 
     $.fn.tableExport.entityMap = {"&": "&#38;", "<": "&#60;", ">": "&#62;", "'": '&#39;', "/": '&#47'};
-
-    function escapeHtml(string) {
-        return String(string).replace(/[&<>'\/]/g, function (s) {
-            return $.fn.tableExport.entityMap[s];
-        });
-    }
 
     function dateNum(v, date1904) {
         if (date1904) v += 1462;

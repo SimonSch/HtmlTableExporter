@@ -1,5 +1,3 @@
-This is a forked project from https://www.clarketravis.com/tableexport/
- 
 ## Getting Started
 
 ### Download and Setup
@@ -9,19 +7,14 @@ To use this plugin, include the [jQuery](https://jquery.com) library, [FileSaver
 ```html
 <script src="jquery.js"></script>
 <script src="filesaver.js"></script>
- ...
 <script src="tableexporter.js"></script>
+...
 ```
 
 ### Install with Bower
 
 ```shell
-$ bower install tableexport.js
-```
-
-### Install with npm
-```shell
-$ npm install tableexport
+$ bower install tableexporter.js
 ```
 
 ### Dependencies
@@ -33,7 +26,7 @@ $ npm install tableexport
 
 
 ##### Add-Ons:
-In order to provide **Office Open XML SpreadsheetML Format ( .xlsx )** support, you must include the following third-party script to your project before [FileSaver.js](https://github.com/eligrey/FileSaver.js/) and [TableExport.js](http://www.clarketravis.com/tableexport).
+In order to provide **Office Open XML SpreadsheetML Format ( .xlsx )** support, you must include the following third-party script to your project before [FileSaver.js](https://github.com/eligrey/FileSaver.js/) and [TableExporter](https://github.com/SimonSch/HtmlTableExporter).
 
 * SheetJS -> [xlsx-core.js](https://github.com/SheetJS/js-xlsx)
 
@@ -46,15 +39,54 @@ In order to provide **Office Open XML SpreadsheetML Format ( .xlsx )** support, 
 
 ## Usage
 
-
-
 ### JavaScript
 
 To use the export plugin, just call:
 
 ```js
-$("table").tableExport({formats: ['<format: eg. xlsx>']});
+$("table").tableExport({formats: ['< >']}); //Format of file eg. txt, csv, xls, xlsx
+
+var html = ($().convertJsonToHtml(<JsonObj>);
+$(html).tableExport({formats:['< >']});
 ```
+
+Options 
+
+simple option
+```js
+var options = ['<fieldName>']; //name of field fron json object
+```
+
+advanced options
+```js
+var options = [{fieldName: '<fieldName>', columnName: '<columnName>', type: '<type>'}]; //name of field from json object, column name alias (optional), object type (optional)
+```
+
+object type options: string, number, date; 
+
+advanced advanced options
+```
+var options = [{ fieldName: '<fieldName>', type: '<type>', options:[{fieldName: '<fieldName>', columnName: '<columnName>'}]; // this if for json objects with nested arrays
+```
+
+| Property | Description | Values | Optional |
+|---|
+|  fieldName  |  Json object field name     | string |  yes|
+|  columnName  |  Column alias name     | string | yes |
+|  type  |  data type     | string, number, date | yes |
+|  options  |  wololo     | object | yes |
+
+Example
+
+```js
+var options = ['<fieldName>']; //name of field fron json object
+var data = JSON.stringify(<data>);
+
+var html = $().convertJsonToHtml(data,options);
+
+$(html).tableExport({formats: ['xlsx']});
+```
+
 
 Additional properties can be passed in to customize the look and feel of your tables, buttons, and exported data.
 
@@ -82,14 +114,16 @@ tables.tableExport.remove();     // removes caption and buttons
 
 ### Properties
 
-A table of available properties and their usage can be found here:
-##### [www.clarketravis.com/tableexport](http://www.clarketravis.com/tableexport/#properties)
-
+| Property | Description | Values | Default |
+|---|
+|  formats  |  wololo     | wololo | wololo  |
+|  filename  |  wololo     | wololo | wololo  |
+|  wololo  |  wololo     | wololo | wololo  |
+|  wololo  |  wololo     | wololo | wololo  |
 
 ### Methods
 
-A table of available methods and their usage can be found here:
-##### [www.clarketravis.com/tableexport](http://www.clarketravis.com/tableexport/#methods)
+
 
 ### Browser Support
 
@@ -102,11 +136,12 @@ A table of available methods and their usage can be found here:
 
 *requires third-party dependencies
 
-### License
-[TableExport.js](http://www.clarketravis.com/tableexport) is licensed under the terms of the [MIT](http://opensource.org/licenses/mit-license.php) License
 
 ### Credits
 
+* [Clarke Travis] (https://www.clarketravis.com/tableexport/) - tableexport
 * [John Resig](https://github.com/jeresig) - jQuery
 * [SheetJS](https://github.com/SheetJS) - js-xlsx 
 * [Eli Grey](https://github.com/eligrey) - FileSaver.js & Blob.js
+
+This is a cloned project from https://www.clarketravis.com/tableexport/
