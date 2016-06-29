@@ -234,7 +234,8 @@
         formats: ["xls", "csv", "txt"],
         fileName: "id",
         ignoreRows: null,
-        ignoreCols: null
+        ignoreCols: null,
+        ignoreCSS: ".tableexport-ignore"
     };
 
     $.fn.tableExport.charset = "charset=utf-8";

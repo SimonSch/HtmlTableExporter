@@ -14,7 +14,7 @@ To use this plugin, include the [jQuery](https://jquery.com) library, [FileSaver
 ### Install with Bower
 
 ```shell
-$ bower install tableexporter.js
+$ bower install table-exporter
 ```
 
 ### Dependencies
