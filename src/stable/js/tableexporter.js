@@ -195,12 +195,6 @@
                     }
                 };
 
-            settings.formats.forEach(
-                function (key) {
-                    exporters[key](rowD, fileName);
-                }
-            );
-
             function downloadFile(dataObject){
                 var object = JSON.parse(dataObject),
                     data = object.data,
@@ -232,7 +226,7 @@
     $.fn.tableExport.defaults = {
         headings: true,
         footers: true,
-        formats: ["xls", "csv", "txt"],
+        format: "csv",
         fileName: "id",
         ignoreRows: null,
         ignoreCols: null,

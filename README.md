@@ -116,7 +116,7 @@ tables.tableExport.remove();     // removes caption and buttons
 
 | Property | Description | Values | Default |
 | :------: | :------: | :-------: | :---: | :-----: | :------: |
-|  formats  |  wololo     | wololo | wololo  |
+|  formats  |  wololo     | string | wololo  |
 |  filename  |  wololo     | wololo | wololo  |
 |  wololo  |  wololo     | wololo | wololo  |
 |  wololo  |  wololo     | wololo | wololo  |
