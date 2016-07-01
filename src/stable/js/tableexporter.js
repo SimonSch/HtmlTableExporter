@@ -1,16 +1,16 @@
 /*!
- * TableExporter.js v0.0.1
- * Copyright 2016 Travis Clarke
- * Licensed under the MIT license
+ * TableExporter v0.0.1
  *
- * Edited by SimonSch
+ * Created by SimonSch &&  Chmoser
+ *
+ * Credit: clarke travis: https://www.clarketravis.com/tableexport/
  */
 
 ;(function (window, undefined) {
 
     /*--- GLOBALS ---*/
     var $ = window.jQuery;
- 
+
     function createHeader(html, options){
         $.each(options, function(i, column){
             if ($.isPlainObject(column)){
@@ -78,7 +78,7 @@
         }
         return html;
     }
-    
+
     $.fn.convertJsonToHtml = function (data, options) {
         var jsonObj = $.parseJSON(data);
         var html = '<table border="1">';
@@ -107,7 +107,7 @@
             ignoreRows = settings.ignoreRows instanceof Array ? settings.ignoreRows : [settings.ignoreRows],
             ignoreCols = settings.ignoreCols instanceof Array ? settings.ignoreCols : [settings.ignoreCols],
             ignoreCSS = settings.ignoreCSS instanceof Array ? settings.ignoreCSS.join(", ") : settings.ignoreCSS;
-        
+
         $this.each(function () {
             var $el = $(this);
             if (isUpdate) { $el.find('caption:not(.head)').remove();}
@@ -195,6 +195,8 @@
                     }
                 };
 
+            exporters[settings.format](rowD, fileName);
+
             function downloadFile(dataObject){
                 var object = JSON.parse(dataObject),
                     data = object.data,
@@ -222,7 +224,6 @@
         return $this;
     };
 
-    // Define the plugin default properties.
     $.fn.tableExport.defaults = {
         headings: true,
         footers: true,

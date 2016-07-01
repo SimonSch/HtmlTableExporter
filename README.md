@@ -44,10 +44,10 @@ In order to provide **Office Open XML SpreadsheetML Format ( .xlsx )** support, 
 To use the export plugin, just call:
 
 ```js
-$("table").tableExport({formats: ['< >']}); //Format of file eg. txt, csv, xls, xlsx
+$("table").tableExport({format: '<type>'}); //Format of file eg. txt, csv, xls, xlsx
 
 var html = ($().convertJsonToHtml(<JsonObj>);
-$(html).tableExport({formats:['< >']});
+$(html).tableExport({format:'<type>'});
 ```
 
 Options 
@@ -84,7 +84,7 @@ var data = JSON.stringify(<data>);
 
 var html = $().convertJsonToHtml(data,options);
 
-$(html).tableExport({formats: ['xlsx']});
+$(html).tableExport({format: 'xlsx'});
 ```
 
 
@@ -109,17 +109,17 @@ tables.tableExport.update({
 tables.tableExport.reset();     // useful for a dynamically altered table
 
 /* remove */
-tables.tableExport.remove();     // removes caption and buttons
+tables.tableExport.remove();     // removes caption
 ```
 
 ### Properties
 
 | Property | Description | Values | Default |
 | :------: | :------: | :-------: | :---: | :-----: | :------: |
-|  formats  |  wololo     | string | wololo  |
-|  filename  |  wololo     | wololo | wololo  |
-|  wololo  |  wololo     | wololo | wololo  |
-|  wololo  |  wololo     | wololo | wololo  |
+|  formats  |  filetype to export     | string | wololo  |
+|  filename  |  filename for exported file     | wololo | wololo  |
+|  ignoreRows  |  wololo     | wololo | wololo  |
+|  ignoreCols  |  wololo     | wololo | wololo  |
 
 ### Methods
 
