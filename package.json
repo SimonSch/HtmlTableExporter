@@ -29,7 +29,7 @@
     "Blob": "*",
     "bootstrap": "~3.3.5",
     "filesaver.js": "~0.2.0",
-    "jquery": "~1.11.3",
+    "jquery": "3.0.0",
     "xlsx": "0.8.0"
   },
   "devDependencies": {
